@@ -1,0 +1,7 @@
+<main [ngClass]="{'active': menuState === true}">
+    <div *ngFor="let item of menuItems" class="c-p menu-item" [routerLink]="item.route"
+        [ngClass]="{'selected-menu-item': currentRoute.includes(item.route)}">
+        <img src="" alt="">
+        <span class="d-block">{{item.description}}</span>
+    </div>
+</main>

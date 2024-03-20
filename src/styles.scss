@@ -1,1 +1,251 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap");
+
+* {
+    font-family: "Cabin", sans-serif;
+}
+
+:root {
+    --primary: #070818;
+    --primary-light: #d9d9d9;
+    --primary-extra-light: #eeeeee;
+    --secondary: #808080;
+    --secondary-light: #b9b9b9;
+    --secondary-extra-light: #e2e2e2;
+    --gray-dark: #070818;
+    --gray: #070818;
+    --gray-light: #d1d1d7;
+    --gray-extra-light: #dbdbe5;
+    --yellow: #ffd06c;
+    --orange: #ff6600;
+    --alert-red: #ffc2c7;
+    --alert-pending: #fff2bf;
+    --alert-analysis: #FFDCC6;
+    --success: #d3efeb;
+    --error: #ff2d2d;
+    --white: #ffffff;
+    --card-background: #d9d9d9;
+    --modal-background: #07081832;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {}
+
+.text-small,
+.text-normal {}
+
+.text-small {
+    font-size: 14px;
+}
+
+.text-normal {
+    font-size: 16px;
+}
+
+.normal-bold {
+    font-weight: bold;
+}
+
+h6 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 24px;
+}
+
+h4 {
+    font-size: 28px;
+}
+
+h3 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+.placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    height: 150%;
+}
+
+hr {
+    background: var(--gray);
+    height: 1px;
+    opacity: 0.6;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    border: none;
+    outline: 0;
+    min-height: 48px;
+    min-width: 140px;
+    padding: 0 12px;
+}
+
+.primary-btn {
+    font-size: 16px;
+    background-color: var(--primary);
+    color: #fff;
+    font-weight: 700;
+    line-height: 150%;
+    border-radius: 12px;
+}
+
+.primary-light-btn {
+    font-size: 16px;
+    background-color: var(--primary-light);
+    color: var(--primary);
+    font-weight: 700;
+    border-radius: 12px;
+    line-height: 150%;
+}
+
+.primary-cancel-btn {
+    font-size: 16px;
+    background-color: #fff;
+    color: var(--primary);
+    font-weight: 700;
+    border: 2px solid var(--primary);
+    line-height: 150%;
+    border-radius: 12px;
+}
+
+.secondary-btn {
+    font-size: 16px;
+    background-color: var(--secondary);
+    color: #fff;
+    font-weight: 700;
+    line-height: 150%;
+    border-radius: 12px;
+}
+
+.secondary-cancel-btn {
+    font-size: 16px;
+    background-color: #fff;
+    color: var(--secondary);
+    font-weight: 700;
+    border: 2px solid var(--secondary);
+    line-height: 150%;
+    border-radius: 12px;
+}
+
+.secondary-light-btn {
+    font-size: 16px;
+    background-color: var(--success);
+    color: var(--primary);
+    font-weight: 700;
+    border-radius: 12px;
+    line-height: 150%;
+}
+
+.new-comment-btn {
+    font-size: 16px;
+    background-color: var(--primary-light);
+    color: var(--gray-dark);
+    font-weight: 700;
+    border-radius: 2px;
+    line-height: 150%;
+}
+
+label {
+    font-size: 16px;
+    color: var(--gray-dark);
+    margin: 0 0 8px 0;
+}
+
+input {
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+    margin: 0;
+    outline: none;
+}
+
+.input-bar,
+.select-bar {
+    border: none;
+    border-bottom: 1px solid var(--gray);
+    border-radius: 0;
+    margin: 0;
+    outline: none;
+}
+
+.invalid-form-field {
+    border: 2px solid var(--orange) !important;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+    border-radius: 4px !important;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select {
+    height: 39.2px !important;
+}
+
+.card {
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    padding: 24px;
+}
+
+.c-p {
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+
+    tr {
+        border-radius: 8px 8px 0px 0px;
+        border-bottom: 1px solid var(--primary-light);
+    }
+
+    th {
+        padding: 16px;
+        background: var(--primary-extra-light);
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 150%;
+        color: var(--gray);
+    }
+
+    td {
+        padding: 16px;
+        font-size: 16px;
+        line-height: 150%;
+        color: var(--gray);
+    }
+}
+
+.toast-success {
+    background: var(--success) !important;
+    color: var(--primary) !important;
+}
+
+.toast-alert {
+    background: var(--yellow) !important;
+    color: var(--primary) !important;
+}
+
+.toast-danger {
+    background: var(--error) !important;
+    color: white !important;
+}
