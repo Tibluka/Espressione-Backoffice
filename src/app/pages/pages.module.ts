@@ -2,12 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesComponent } from './pages.component';
 import { RouterModule } from '@angular/router';
+import { MenuComponent } from '../components/general/menu/menu.component';
+import { HeaderComponent } from '../components/general/header/header.component';
+import { ModalComponent } from '../components/general/modal/modal.component';
 
 
 
 @NgModule({
   declarations: [
-    PagesComponent
+    PagesComponent,
+    MenuComponent,
+    HeaderComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,

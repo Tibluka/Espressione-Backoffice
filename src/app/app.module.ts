@@ -4,21 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { MenuComponent } from './components/general/menu/menu.component';
-import { LoadingComponent } from './components/general/loading/loading.component';
-import { ModalComponent } from './components/general/modal/modal.component';
-import { HeaderComponent } from './components/general/header/header.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MenuComponent,
-    LoadingComponent,
-    ModalComponent,
-    HeaderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
       {
