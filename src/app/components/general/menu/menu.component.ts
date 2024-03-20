@@ -9,20 +9,28 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class MenuComponent {
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    if (this.menuState === true && event.target.outerWidth <= 800) {
-      this.menuService.setMenuState(false);
-    } else if (event.target.outerWidth > 800) {
-      this.menuService.setMenuState(true);
+  public menuItems = [
+    {
+      route: '/wines',
+      description: 'Vinhos',
+    },
+    {
+      route: '/users',
+      description: 'Usuários',
+    },
+    {
+      route: '/feedbacks',
+      description: 'Feedbacks',
+    },
+    {
+      route: '/recommendations',
+      description: 'Recomendações',
+    },
+    {
+      route: '/automation-requests',
+      description: 'Pedidos de automação',
     }
-  }
-
-  public menuItems = [{
-    route: '',
-    description: '',
-    icon: ''
-  }];
+  ];
 
   get loggedUser() {
     return this.userService.loggedUser;
@@ -38,7 +46,7 @@ export class MenuComponent {
 
   constructor(private userService: UserService,
     private menuService: MenuService) {
-    this.menuItems = []
+
   }
 
   ngOnInit(): void {

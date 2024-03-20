@@ -9,12 +9,14 @@
 }
 
 :root {
+    --espressione-primary: #5B1111;
     --primary: #070818;
     --primary-light: #d9d9d9;
     --primary-extra-light: #eeeeee;
     --secondary: #808080;
     --secondary-light: #b9b9b9;
     --secondary-extra-light: #e2e2e2;
+    --brown-extra-light: #F7F5F2;
     --gray-dark: #070818;
     --gray: #070818;
     --gray-light: #d1d1d7;
@@ -249,3 +251,6 @@ table {
     background: var(--error) !important;
     color: white !important;
 }
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

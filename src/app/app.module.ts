@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
       },
       { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
     ]),
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

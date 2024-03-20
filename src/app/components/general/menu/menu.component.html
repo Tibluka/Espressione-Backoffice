@@ -1,7 +1,13 @@
 <main [ngClass]="{'active': menuState === true}">
-    <div *ngFor="let item of menuItems" class="c-p menu-item" [routerLink]="item.route"
-        [ngClass]="{'selected-menu-item': currentRoute.includes(item.route)}">
-        <img src="" alt="">
-        <span class="d-block">{{item.description}}</span>
+    <div class="content">
+        <div style="display: flex; justify-content: center; width: 100%;">
+            <img style="width: 160px;" src="../../../../assets/img/logo-vertical.svg" alt="">
+        </div>
+        <hr>
+        <div *ngFor="let item of menuItems" class="c-p menu-item" [routerLink]="item.route"
+            [ngClass]="{'selected-menu-item': currentRoute.includes(item.route)}">
+            <span class="d-block">{{item.description}}</span>
+        </div>
     </div>
+    <button class="primary-cancel-btn">Sair</button>
 </main>
