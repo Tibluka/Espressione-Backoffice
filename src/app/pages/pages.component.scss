@@ -1,0 +1,28 @@
+.pages-content {
+    display: flex;
+    margin-top: 104px;
+    width: 100%;
+    padding: 58px 65px 20px calc(65px + 264px);
+    width: 100%;
+}
+
+app-toasts {
+    width: -webkit-fill-available;
+    padding-right: 64px;
+    position: fixed !important;
+}
+
+@media (max-width: 800px) {
+    .pages-content {
+        padding-left: 65px;
+    }
+}
+
+
+@media (max-width: 540px) {
+    .pages-content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
