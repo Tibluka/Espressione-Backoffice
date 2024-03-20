@@ -1,1 +1,44 @@
-<p>wines works!</p>
+<main>
+    <div class="card-principal">
+        <div class="title">Novos vinhos</div>
+        <hr style="margin: 16px 0 24px 0;">
+        <button (click)="addWine()" class="primary-btn medium">Adicionar vinho</button>
+    </div>
+
+    <div class="card-search">
+        <div class="title">Buscar</div>
+        <hr style="margin: 16px 0 24px 0;">
+        <div class="d-flex align-items-end justify-content-between">
+            <div class="form-group d-flex flex-column w-50 me-4">
+                <label for="">Digite o nome</label>
+                <input type="text">
+            </div>
+            <button class="primary-btn small">Buscar</button>
+        </div>
+    </div>
+
+    <div class="card-results">
+        <div class="title">Resultados</div>
+        <hr style="margin: 16px 0 24px 0;">
+        <div class="w-100 table-config">
+            <table>
+                <th class="text-start">Código</th>
+                <th class="text-start  text-truncate nowrap">Agente financeiro</th>
+                <th class="col-3 text-center text-truncate nowrap">Acessebanker pai</th>
+                <th class="col-3 text-center text-truncate nowrap">Acessebanker filho</th>
+                <th class="col-3 text-center">Cliente</th>
+                <th class="col-3 text-center">Valor</th>
+                <th class="col-3 text-end  text-truncate nowrap">Data finalização</th>
+                <tr class="c-p">
+                    <td class="text-start text-truncate">teste</td>
+                    <td class="text-start text-truncate"> teste</td>
+                    <td class="text-center">teste</td>
+                    <td class="text-center">teste </td>
+                    <td class="text-center">teste</td>
+                    <td class="text-center">teste</td>
+                    <td class="text-end">teste</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</main>

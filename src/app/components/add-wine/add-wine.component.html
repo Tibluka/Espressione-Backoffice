@@ -1,0 +1,36 @@
+<main>
+    <form [formGroup]="wineForm" (ngSubmit)="next()">
+        <div class="form">
+
+            <div class="form-group d-flex flex-column w-100">
+                <label for="name">Nome</label>
+                <input [ngClass]="{'invalid-form-field': validateField(wineForm.get('name'))}" class="input-bar"
+                    formControlName="name" type="text">
+            </div>
+
+            <div class="form-group d-flex flex-column w-100">
+                <label for="region">Região</label>
+                <input [ngClass]="{'invalid-form-field': validateField(wineForm.get('region'))}" class="input-bar"
+                    type="date" [max]="date" date="dd/MM/yyyy" formControlName="region">
+            </div>
+
+            <div class="form-group d-flex flex-column w-100">
+                <label for="alcoholContent">Álcool</label>
+                <input [ngClass]="{'invalid-form-field': validateField(wineForm.get('alcoholContent'))}"
+                    class="input-bar" type="number" [max]="100" formControlName="alcoholContent">
+            </div>
+        </div>
+
+        <div class="buttons-accept">
+            <button (click)="close(false)" type="button" class="primary-cancel-btn exclude">
+                Cancelar
+            </button>
+            <button type="submit" class="primary-btn">
+                Próximo
+            </button>
+        </div>
+
+    </form>
+
+
+</main>

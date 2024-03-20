@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AddWineComponent } from 'src/app/components/add-wine/add-wine.component';
+import { ModalService } from 'src/app/services/modal/modal.service';
 
 @Component({
   selector: 'app-wines',
@@ -7,4 +9,16 @@ import { Component } from '@angular/core';
 })
 export class WinesComponent {
 
+
+  constructor(private modalService: ModalService) {
+
+  }
+  ngOnInit(): void {
+
+  }
+
+  addWine() {
+    this.modalService.open(AddWineComponent)
+  }
 }
+

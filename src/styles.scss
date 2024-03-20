@@ -44,11 +44,11 @@ h6 {}
 .text-normal {}
 
 .text-small {
-    font-size: 14px;
+    font-size: 12x;
 }
 
 .text-normal {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .normal-bold {
@@ -96,60 +96,66 @@ hr {
 button {
     border: none;
     outline: 0;
-    min-height: 48px;
+    min-height: 42px;
     min-width: 140px;
     padding: 0 12px;
+    &.small {
+        min-width: 100px;
+    }
+    &.medium {
+        min-width: 140px;
+    }
 }
 
 .primary-btn {
-    font-size: 16px;
-    background-color: var(--primary);
+    font-size: 14px;
+    background-color: var(--espressione-primary);
     color: #fff;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 150%;
     border-radius: 12px;
 }
 
 .primary-light-btn {
-    font-size: 16px;
+    font-size: 14px;
     background-color: var(--primary-light);
     color: var(--primary);
-    font-weight: 700;
+    font-weight: 500;
     border-radius: 12px;
     line-height: 150%;
 }
 
 .primary-cancel-btn {
-    font-size: 16px;
+    font-size: 14px;
     background-color: #fff;
     color: var(--primary);
-    font-weight: 700;
+    font-weight: 500;
     border: 2px solid var(--primary);
     line-height: 150%;
     border-radius: 12px;
 }
 
 .secondary-btn {
-    font-size: 16px;
+    font-size: 14px;
     background-color: var(--secondary);
     color: #fff;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 150%;
     border-radius: 12px;
 }
 
 .secondary-cancel-btn {
-    font-size: 16px;
+    font-size: 14px;
     background-color: #fff;
     color: var(--secondary);
-    font-weight: 700;
+    font-weight: 500;
     border: 2px solid var(--secondary);
     line-height: 150%;
     border-radius: 12px;
 }
 
 .secondary-light-btn {
-    font-size: 16px;
+    font-size: 14px;
     background-color: var(--success);
     color: var(--primary);
     font-weight: 700;
@@ -158,18 +164,18 @@ button {
 }
 
 .new-comment-btn {
-    font-size: 16px;
+    font-size: 14px;
     background-color: var(--primary-light);
     color: var(--gray-dark);
-    font-weight: 700;
+    font-weight: 500;
     border-radius: 2px;
     line-height: 150%;
 }
 
 label {
-    font-size: 16px;
+    font-size: 14px;
     color: var(--gray-dark);
-    margin: 0 0 8px 0;
+    margin: 0 0 6px 0;
 }
 
 input {
@@ -177,6 +183,7 @@ input {
     border-radius: 8px;
     margin: 0;
     outline: none;
+    padding: 8px 12px;
 }
 
 .input-bar,
@@ -221,19 +228,19 @@ table {
     }
 
     th {
-        padding: 16px;
+        padding: 14px;
         background: var(--primary-extra-light);
         font-weight: 600;
-        font-size: 16px;
+        font-size: 14px;
         line-height: 150%;
         color: var(--gray);
     }
 
     td {
-        padding: 16px;
-        font-size: 16px;
+        padding: 14px;
+        font-size: 14px;
         line-height: 150%;
-        color: var(--gray);
+        color: var(--primary);
     }
 }
 
