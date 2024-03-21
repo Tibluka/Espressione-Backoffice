@@ -4,22 +4,30 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddWineComponent } from './components/add-wine/add-wine.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TokenInterceptorService } from './services/interceptor/token-interceptor.service';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { ToastModule } from './components/general/toast/toast.module';
+import { LoadingComponent } from './components/general/loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddWineComponent
+    AddWineComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    ToastModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxMaskDirective, 
+    NgxMaskPipe,
     RouterModule.forRoot([
       {
         path: '', component: AppComponent,
@@ -31,7 +39,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ]),
     NgbModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    },
+    provideNgxMask()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

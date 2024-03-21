@@ -5,7 +5,7 @@
         <button (click)="addWine()" class="primary-btn medium">Adicionar vinho</button>
     </div>
 
-    <div class="card-search">
+    <!--     <div class="card-search">
         <div class="title">Buscar</div>
         <hr style="margin: 16px 0 24px 0;">
         <div class="d-flex align-items-end justify-content-between">
@@ -15,30 +15,48 @@
             </div>
             <button class="primary-btn small">Buscar</button>
         </div>
-    </div>
+    </div> -->
 
     <div class="card-results">
-        <div class="title">Resultados</div>
+        <div class="title">Todos os vinhos</div>
         <hr style="margin: 16px 0 24px 0;">
-        <div class="w-100 table-config">
-            <table>
-                <th class="text-start">Código</th>
-                <th class="text-start  text-truncate nowrap">Agente financeiro</th>
-                <th class="col-3 text-center text-truncate nowrap">Acessebanker pai</th>
-                <th class="col-3 text-center text-truncate nowrap">Acessebanker filho</th>
-                <th class="col-3 text-center">Cliente</th>
-                <th class="col-3 text-center">Valor</th>
-                <th class="col-3 text-end  text-truncate nowrap">Data finalização</th>
-                <tr class="c-p">
-                    <td class="text-start text-truncate">teste</td>
-                    <td class="text-start text-truncate"> teste</td>
-                    <td class="text-center">teste</td>
-                    <td class="text-center">teste </td>
-                    <td class="text-center">teste</td>
-                    <td class="text-center">teste</td>
-                    <td class="text-end">teste</td>
-                </tr>
-            </table>
+
+        <div *ngIf="allWinesList && allWinesList.length > 0">
+            <div class="search">
+                <div class="d-flex align-items-end justify-content-between">
+                    <div class="form-group d-flex flex-column w-50 me-4">
+                        <input type="text" placeholder="Digite o nome">
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-100 table-config">
+                <table>
+                    <th class="text-start">Nome</th>
+                    <th class="text-start">Tipo</th>
+                    <th class="text-center">Ano</th>
+                    <th class="text-center">País</th>
+                    <th class="text-center">Região</th>
+                    <th class="text-center">Uva</th>
+                    <th class="text-center">Álcool</th>
+                    <th class="text-end">Status</th>
+                    <tr *ngFor="let wine of allWinesList | filter: searchTerm; index as i" class="">
+                        <td class="text-start text-truncate">{{wine.name}}</td>
+                        <td class="text-start text-truncate">{{wine.wineType}}</td>
+                        <td class="text-center">{{wine.year}}</td>
+                        <td class="text-center">{{wine.country}}</td>
+                        <td class="text-center">{{wine.region ? wine.region : '-'}}</td>
+                        <td class="text-center">{{wine.grapeType}}</td>
+                        <td class="text-center">{{wine.alcoholContent}}%</td>
+                        <td class="text-end">{{wine.active ? 'Ativo' : 'Inativo'}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="no-results" *ngIf="!allWinesList || allWinesList.length === 0">
+            <i>Nenhum vinho adicionado</i>
         </div>
     </div>
+
+
 </main>

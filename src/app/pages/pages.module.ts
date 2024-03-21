@@ -6,6 +6,7 @@ import { MenuComponent } from '../components/general/menu/menu.component';
 import { HeaderComponent } from '../components/general/header/header.component';
 import { ModalComponent } from '../components/general/modal/modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastModule } from '../components/general/toast/toast.module';
 
 
 
@@ -19,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     NgbModule,
+    ToastModule,
     RouterModule.forChild([
       {
         path: '', component: PagesComponent,

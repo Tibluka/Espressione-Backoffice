@@ -47,10 +47,10 @@ export class LoginComponent extends ValidatorService {
 
     this.loadingService.setLoadingState(true);
     this.loginService.login(this.loginForm.value).subscribe(async (login: { msg: string, token: string }) => {
-      localStorage.setItem('acs_esp_tkn', login.token);
+      localStorage.setItem('esp_tkn', login.token);
       await this.userService.setLoggedUser();
       this.loadingService.setLoadingState(false);
-      this.router.navigate(['/home']);
+      this.router.navigate(['/wines']);
     }, error => {
       this.toastService.show(error, {
         classname: 'toast-danger toast not-logged-user'

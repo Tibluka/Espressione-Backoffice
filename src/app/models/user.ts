@@ -4,6 +4,7 @@ export class User  {
     password: string = '';
     email: string = '';
     userTypeEnum: string = '';
+    userStatusEnum: string = '';
     cpfCnpj: string = '';
     cellphone: string = '';
     personType: string = '';

@@ -11,9 +11,14 @@ import { environment } from 'src/environments/environment';
 export class WineService {
 
   private wineData: Wine = new Wine();
+  private allWineListData: Array<Wine> = [];
 
   get wine() {
     return this.wineData;
+  }
+
+  get allWineList() {
+    return this.allWineListData;
   }
 
   constructor(private http: HttpClient,
@@ -26,7 +31,7 @@ export class WineService {
     this.toastService.clear();
     this.loadingService.setLoadingState(true);
     try {
-      await this.http.post(`${environment.url}/espressione/api/v1/secure/wine`, wine).toPromise();
+      await this.http.post(`${environment.url}/secure/wine`, wine).toPromise();
       this.toastService.show('Vinho criado com sucesso!',
         { classname: 'toast toast-success' });
       this.loadingService.setLoadingState(false);
@@ -34,6 +39,22 @@ export class WineService {
       this.toastService.show(error.error.message,
         { classname: 'toast toast-danger' })
       this.loadingService.setLoadingState(false);
+    }
+  }
+
+  async listAllWines() {
+    this.toastService.clear();
+    this.loadingService.setLoadingState(true);
+    try {
+      const wines = await this.http.get<Array<Wine>>(`${environment.url}/secure/wine`).toPromise();
+      this.allWineListData = wines;
+      this.loadingService.setLoadingState(false);
+      return true
+    } catch (error) {
+      this.toastService.show(error.error.message,
+        { classname: 'toast toast-danger' })
+      this.loadingService.setLoadingState(false);
+      return false
     }
   }
 }

@@ -1,8 +1,8 @@
 <div class="pages-content">
     <app-menu></app-menu>
     <div class="w-100">
-<!--     <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
- -->        <router-outlet></router-outlet>
+        <app-toast aria-live="polite" aria-atomic="true"></app-toast>
+        <router-outlet></router-outlet>
     </div>
 </div>
 <app-modal *ngIf="modalState" [component]="modalComponent"></app-modal>

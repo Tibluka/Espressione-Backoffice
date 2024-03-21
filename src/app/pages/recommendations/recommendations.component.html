@@ -1,1 +1,52 @@
-<p>recommendations works!</p>
+<main>
+    <div class="card-search">
+        <div class="title">Buscar</div>
+        <hr style="margin: 16px 0 24px 0;">
+        <div class="d-flex align-items-end justify-content-between">
+            <div class="form-group d-flex flex-column w-50 me-4">
+                <label for="">Digite o nome</label>
+                <input type="text">
+            </div>
+            <button class="primary-btn small">Buscar</button>
+        </div>
+    </div>
+
+
+    <div class="card-results">
+        <div class="title">Recomendações</div>
+        <hr style="margin: 16px 0 24px 0;">
+        <div *ngIf="recommendationsList && recommendationsList.length > 0">
+
+            <div class="w-100 table-config">
+                <div class="w-100 table-config">
+                    <table>
+                        <th class="text-start">Nome</th>
+                        <th class="text-start">Tipo</th>
+                        <th class="text-center">Ano</th>
+                        <th class="text-center">País</th>
+                        <th class="text-center">Região</th>
+                        <th class="text-center">Uva</th>
+                        <th class="text-center">Álcool</th>
+                        <th class="text-end">Status</th>
+                        <tr *ngFor="let recommendation of recommendationsList" class="">
+                            <td class="text-start text-truncate">{{recommendation.wine.name}}</td>
+                            <td class="text-start text-truncate">{{recommendation.wine.wineType}}</td>
+                            <td class="text-center">{{recommendation.wine.year}}</td>
+                            <td class="text-center">{{recommendation.wine.country}}</td>
+                            <td class="text-center">{{recommendation.wine.region ? recommendation.wine.region : '-'}}
+                            </td>
+                            <td class="text-center">{{recommendation.wine.grapeType}}</td>
+                            <td class="text-center">{{recommendation.wine.alcoholContent}}%</td>
+                            <td class="text-end">{{recommendation.wine.active ? 'Ativo' : 'Inativo'}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="no-results" *ngIf="!recommendationsList || recommendationsList.length === 0">
+            <i>Nenhuma recomendação encontrada</i>
+        </div>
+    </div>
+
+
+</main>

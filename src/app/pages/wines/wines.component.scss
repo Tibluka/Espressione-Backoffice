@@ -3,6 +3,7 @@ main {
         font-size: 18px;
         font-weight: 600;
     }
+
     .card-principal {
         width: 100%;
         border-radius: 8px;
@@ -20,6 +21,10 @@ main {
         padding: 16px;
     }
 
+    .search {
+        margin-bottom: 24px;
+    }
+
     .card-results {
         margin-top: 32px;
         width: 100%;
@@ -27,5 +32,14 @@ main {
         background-color: white;
         font-size: 16px;
         padding: 16px;
+    }
+
+    .no-results {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 48px 0;
+        font-size: 14px;
     }
 }

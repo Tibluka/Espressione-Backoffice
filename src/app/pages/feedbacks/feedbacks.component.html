@@ -1,1 +1,41 @@
-<p>feedbacks works!</p>
+<main>
+    <div class="card-search">
+        <div class="title">Buscar</div>
+        <hr style="margin: 16px 0 24px 0;">
+        <div class="d-flex align-items-end justify-content-between">
+            <div class="form-group d-flex flex-column w-50 me-4">
+                <label for="">Digite o nome</label>
+                <input type="text">
+            </div>
+            <button class="primary-btn small">Buscar</button>
+        </div>
+    </div>
+
+
+    <div class="card-results">
+        <div class="title">Feedbacks</div>
+        <hr style="margin: 16px 0 24px 0;">
+        <div *ngIf="feedbacksList && feedbacksList.length > 0">
+ 
+            <div class="w-100 table-config">
+                <table>
+                    <th class="text-start">Descrição</th>
+                    <th class="text-center">Avaliação</th>
+                    <th class="text-center">Data</th>
+                    <th class="text-center">Público</th>
+                    <tr *ngFor="let feedback of feedbacksList; index as i" class="">
+                        <td class="text-start text-truncate">{{feedback.description}}</td>
+                        <td class="text-center text-truncate">{{feedback.rating}}</td>
+                        <td class="text-center">{{feedback.dateHourIncluded | date: 'dd/MM/yyyy HH:mm'}}</td>
+                        <td class="text-center">{{feedback.public ? 'Sim' : 'Não'}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="no-results" *ngIf="!feedbacksList || feedbacksList.length === 0">
+            <i>Nenhum usuário encontrado</i>
+        </div>
+    </div>
+
+
+</main>

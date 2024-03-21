@@ -1,1 +1,50 @@
-<p>users works!</p>
+<main>
+    <div class="card-search">
+        <div class="title">Buscar</div>
+        <hr style="margin: 16px 0 24px 0;">
+        <div class="d-flex align-items-end justify-content-between">
+            <div class="form-group d-flex flex-column w-50 me-4">
+                <label for="">Digite o nome</label>
+                <input type="text">
+            </div>
+            <button class="primary-btn small">Buscar</button>
+        </div>
+    </div>
+
+
+    <div class="card-results">
+        <div class="title">Usuários</div>
+        <hr style="margin: 16px 0 24px 0;">
+        <div *ngIf="userList && userList.length > 0">
+            <div class="search">
+                <div class="d-flex align-items-end justify-content-between">
+                    <div class="form-group d-flex flex-column w-50 me-4">
+                        <input type="text" placeholder="Digite o nome">
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-100 table-config">
+                <table>
+                    <th class="text-start">Nome</th>
+                    <th class="text-start">E-mail</th>
+                    <th class="text-center">CPF/CNPJ</th>
+                    <th class="text-center">Celular</th>
+                    <th class="text-end">Status</th>
+                    <tr *ngFor="let user of userList; index as i" class="">
+                        <td class="text-start text-truncate">{{user.name}}</td>
+                        <td class="text-start text-truncate">{{user.email}}</td>
+                        <td class="text-center">{{user.cpfCnpj}}</td>
+                        <td class="text-center">{{user.cellphone}}</td>
+                        <td class="text-end">{{user.userStatusEnum === 'ACTIVE' ? 'Ativo' : 'Inativo'}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="no-results" *ngIf="!userList || userList.length === 0">
+            <i>Nenhum usuário encontrado</i>
+        </div>
+    </div>
+
+   
+</main>

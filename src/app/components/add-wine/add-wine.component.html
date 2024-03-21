@@ -5,14 +5,14 @@
 
             <div class="form-group d-flex align-items-center radio">
                 <div class="form-check">
-                    <input required [value]="true" [(ngModel)]="active" class="form-check-input" type="radio"
-                        name="active" id="active">
+                    <input required [value]="true" class="form-check-input" type="radio" formControlName="active"
+                        id="active" [ngClass]="{'invalid-form-field': validateField(wineForm.get('active'))}">
                     <label class="form-check-label" for="active">
                         Ativo </label>
                 </div>
                 <div class="form-check margin-icon">
-                    <input required [value]="false" [(ngModel)]="active" class="form-check-input" type="radio"
-                        name="active" id="false">
+                    <input required [value]="false" class="form-check-input" type="radio" formControlName="active"
+                        id="false" [ngClass]="{'invalid-form-field': validateField(wineForm.get('active'))}">
                     <label class="form-check-label" for="false">
                         Inativo </label>
                 </div>
@@ -27,7 +27,8 @@
 
                 <div class="form-group d-flex flex-column w-100">
                     <label for="wineType">Tipo</label>
-                    <select class="form-select" name="wineType" formControlName="wineType">
+                    <select class="form-select" name="wineType" formControlName="wineType"
+                        [ngClass]="{'invalid-form-field': validateField(wineForm.get('wineType'))}">
                         <option value="TINTO">Tinto</option>
                         <option value="ROSE">Rose</option>
                         <option value="BRANCO">Branco</option>
@@ -38,7 +39,7 @@
             <div class="side-by-side">
                 <div class="form-group d-flex flex-column w-100">
                     <label for="year">Ano</label>
-                    <input [ngClass]="{'invalid-form-field': validateField(wineForm.get('year'))}" class=""
+                    <input mask="0000" [ngClass]="{'invalid-form-field': validateField(wineForm.get('year'))}" class=""
                         formControlName="year" type="text">
                 </div>
 
@@ -58,9 +59,9 @@
                     <label for="country">País</label>
                     <select class="form-select" formControlName="country"
                         [ngClass]="{'invalid-form-field': validateField(wineForm.get('country'))}">
-                        <option value="PINOT_NOIR">Pinot Noir</option>
-                        <option value="ROSE">Rose</option>
-                        <option value="BRANCO">Branco</option>
+                        <option value="null" selected hidden></option>
+                        <option *ngFor="let country of countriesList" [value]="country.uf">{{country.description}}
+                        </option>
                     </select>
                 </div>
 
@@ -76,10 +77,10 @@
                 <div class="form-group d-flex flex-column w-100">
                     <label for="alcoholContent">Álcool</label>
                     <input [ngClass]="{'invalid-form-field': validateField(wineForm.get('alcoholContent'))}" class=""
-                        type="number" [max]="100" formControlName="alcoholContent">
+                        type="number" [max]="100" [min]="0" mask="00" formControlName="alcoholContent">
                 </div>
             </div>
-         
+
         </div>
 
         <div class="buttons-accept">
