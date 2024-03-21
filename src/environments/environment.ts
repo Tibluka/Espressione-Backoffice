@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    url: '/espressioneapi/api/v1'
+    url: 'http://espressione.agacode.com.br:8086'
   };
   

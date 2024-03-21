@@ -1,0 +1,35 @@
+main {
+    .title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 24px;
+    }
+
+    .radio {
+        margin-bottom: 16px;
+        .form-check  {
+            margin-right: 16px;
+        }
+        .form-check-input {
+            padding-right: 4px;
+        }
+    }
+
+    .buttons-accept {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 48px;
+
+        .exclude {
+            margin-right: 24px;
+        }
+    }
+
+    .side-by-side {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-bottom: 16px;
+    }
+}

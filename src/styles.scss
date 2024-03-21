@@ -184,6 +184,7 @@ input {
     margin: 0;
     outline: none;
     padding: 8px 12px;
+    font-size: 14px;
 }
 
 .input-bar,
@@ -196,7 +197,7 @@ input {
 }
 
 .invalid-form-field {
-    border: 2px solid var(--orange) !important;
+    border: 2px solid var(--error) !important;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
     border-radius: 4px !important;
 }
@@ -207,6 +208,7 @@ input[type="number"],
 input[type="date"],
 select {
     height: 39.2px !important;
+    font-size: 14px;
 }
 
 .card {
@@ -259,5 +261,9 @@ table {
     color: white !important;
 }
 
+::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+}
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';

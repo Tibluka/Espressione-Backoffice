@@ -1,1 +1,31 @@
-<p>login works!</p>
+<main>
+    <div class="card-login">
+
+        <div class="form w-100 d-flex align-items-center justify-content-center">
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <h4>Entrar no backoffice</h4>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input [ngClass]="{'invalid-form-field': validateField(loginForm.get('email'))}" type="text"
+                        class="form-control" formControlName="email">
+                </div>
+
+                <div class="form-group position-relative">
+                    <label for="password">Senha</label>
+                    <input type="password" class="form-control" formControlName="password" id="password" required="true"
+                        aria-label="password" aria-describedby="basic-addon1"
+                        [ngClass]="{'invalid-form-field': validateField(loginForm.get('password'))}">
+                    <span class="position-absolute position-eye c-p" (click)="password_show_hide()">
+                        <img src="../../../assets/icons/login/eye-open.svg" id="show_eye" alt="">
+                        <img src="../../../assets/icons/login/eye-closed.svg" style="display: none" id="hide_eye"
+                            alt="">
+                    </span>
+                </div>
+
+                <button class="primary-btn w-100" type="submit">Entrar</button>
+
+
+            </form>
+        </div>
+    </div>
+</main>

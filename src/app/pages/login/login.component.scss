@@ -1,0 +1,59 @@
+main {
+    background-color: var(--brown-extra-light);
+    padding: 88px 550px;
+    height: 100vh;
+
+    .card-login {
+        width: 100%;
+        padding: 36px;
+        border-radius: 8px;
+        background-color: white;
+        box-shadow: 0 16px 38px -12px rgba(0, 0, 0, .56), 0 4px 25px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);
+
+        form {
+            width: 100%;
+
+            input {
+                margin-bottom: 24px;
+            }
+        }
+
+        h4 {
+            margin-bottom: 48px;
+        }
+
+        button {
+            margin-top: 24px;
+        }
+    }
+}
+
+@media (max-width: 1670px) {
+    main {
+        padding: 88px 350px;
+    }
+}
+
+@media (max-width: 1300px) {
+    main {
+        padding: 88px 150px;
+    }
+}
+
+@media (max-width: 750px) {
+    main {
+        padding: 88px 50px;
+    }
+}
+
+
+@media (max-width: 450px) {
+    main {
+        padding: 0;
+
+        .card-login {
+            height: 100vh;
+            padding: 88px 36px;
+        }
+    }
+}
