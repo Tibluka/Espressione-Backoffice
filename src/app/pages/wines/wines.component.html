@@ -39,7 +39,8 @@
                     <th class="text-center">Região</th>
                     <th class="text-center">Uva</th>
                     <th class="text-center">Álcool</th>
-                    <th class="text-end">Status</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Ação</th>
                     <tr *ngFor="let wine of allWinesList | filter: searchTerm; index as i" class="">
                         <td class="text-start text-truncate">{{wine.name}}</td>
                         <td class="text-start text-truncate">{{wine.wineType}}</td>
@@ -48,7 +49,8 @@
                         <td class="text-center">{{wine.region ? wine.region : '-'}}</td>
                         <td class="text-center">{{wine.grapeType}}</td>
                         <td class="text-center">{{wine.alcoholContent}}%</td>
-                        <td class="text-end">{{wine.active ? 'Ativo' : 'Inativo'}}</td>
+                        <td class="text-center">{{wine.active ? 'Ativo' : 'Inativo'}}</td>
+                        <td class="text-center c-p" (click)="exclude(wine)"><img src="../../../assets/img/trash.svg" alt=""></td>
                     </tr>
                 </table>
             </div>

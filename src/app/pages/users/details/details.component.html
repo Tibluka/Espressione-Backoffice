@@ -1,0 +1,73 @@
+<main>
+
+
+    <div class="card-results">
+        <div class="title">Detalhes do usuário</div>
+        <hr style="margin: 16px 0 24px 0;">
+        <div *ngIf="userSelected">
+            <div class="search">
+                <div class="d-flex align-items-end justify-content-between">
+                    <div class="form-group d-flex flex-column w-50 me-4">
+                        <input type="text" placeholder="Digite o nome">
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-100 table-config">
+                <table>
+                    <th class="text-start">Nome</th>
+                    <th class="text-start">E-mail</th>
+                    <th class="text-center">CPF/CNPJ</th>
+                    <th class="text-center">Celular</th>
+                    <th class="text-end">Status</th>
+                    <tr class="">
+                        <td class="text-start text-truncate">{{userSelected.name}}</td>
+                        <td class="text-start text-truncate">{{userSelected.email}}</td>
+                        <td class="text-center">{{userSelected.cpfCnpj}}</td>
+                        <td class="text-center">{{userSelected.cellphone}}</td>
+                        <td class="text-end">{{userSelected.userStatusEnum === 'ACTIVE' ? 'Ativo' : 'Inativo'}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-wine-cellars">
+        <div class="title">Adegas</div>
+
+        <hr style="margin: 16px 0 24px 0;">
+        <button (click)="addWineCellar()" class="primary-btn medium">Adicionar adega</button>
+
+        <div *ngIf="userList && userList.length > 0">
+            <div class="search">
+                <div class="d-flex align-items-end justify-content-between">
+                    <div class="form-group d-flex flex-column w-50 me-4">
+                        <input type="text" placeholder="Digite o nome">
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-100 table-config">
+                <table>
+                    <th class="text-start">Nome</th>
+                    <th class="text-start">E-mail</th>
+                    <th class="text-center">CPF/CNPJ</th>
+                    <th class="text-center">Celular</th>
+                    <th class="text-end">Status</th>
+                    <tr *ngFor="let user of userList; index as i" class="">
+                        <td class="text-start text-truncate">{{user.name}}</td>
+                        <td class="text-start text-truncate">{{user.email}}</td>
+                        <td class="text-center">{{user.cpfCnpj}}</td>
+                        <td class="text-center">{{user.cellphone}}</td>
+                        <td class="text-end">{{user.userStatusEnum === 'ACTIVE' ? 'Ativo' : 'Inativo'}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="no-wine-cellars">
+            <i>Nenhuma adega encontrada</i>
+        </div>
+    </div>
+
+
+</main>

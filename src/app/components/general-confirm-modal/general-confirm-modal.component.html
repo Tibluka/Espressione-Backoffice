@@ -1,0 +1,16 @@
+<main>
+
+    <h5 [innerHTML]="modalContent.title"></h5>
+
+    <p [innerHTML]="modalContent.text"></p>
+
+    <div class="buttons-accept">
+        <button (click)="close(false)" class="primary-cancel-btn me-3">
+            {{modalContent.btnCancelText}}
+        </button>
+        <button (click)="close(true)" class="primary-btn">
+            {{modalContent.btnConfirmText}}
+        </button>
+    </div>
+    
+</main>

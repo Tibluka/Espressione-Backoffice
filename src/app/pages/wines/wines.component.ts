@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AddWineComponent } from 'src/app/components/add-wine/add-wine.component';
+import { GeneralConfirmModalComponent } from 'src/app/components/general-confirm-modal/general-confirm-modal.component';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { WineService } from 'src/app/services/wine/wine.service';
 
@@ -38,6 +39,18 @@ export class WinesComponent {
     });
   }
 
+  exclude(wine: any) {
+    let message;
+    message = `Deseja confirmar a exclusão do vinho <b>${wine.name}</b>?`;
 
+    this.modalService.open(GeneralConfirmModalComponent, {
+      content: {
+        title: 'Confirmar exclusão',
+        text: message,
+        btnConfirmText: 'Confirmar',
+        btnCancelText: 'Cancelar'
+      }
+    })
+  }
 }
 

@@ -1,4 +1,10 @@
 <main>
+    <div class="card-principal">
+        <div class="title">Nova recomendação</div>
+        <hr style="margin: 16px 0 24px 0;">
+        <button (click)="addRecommendation()" class="primary-btn medium">Adicionar recomendação</button>
+    </div>
+
     <div class="card-search">
         <div class="title">Buscar</div>
         <hr style="margin: 16px 0 24px 0;">
@@ -27,7 +33,8 @@
                         <th class="text-center">Região</th>
                         <th class="text-center">Uva</th>
                         <th class="text-center">Álcool</th>
-                        <th class="text-end">Status</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Ação</th>
                         <tr *ngFor="let recommendation of recommendationsList" class="">
                             <td class="text-start text-truncate">{{recommendation.wine.name}}</td>
                             <td class="text-start text-truncate">{{recommendation.wine.wineType}}</td>
@@ -37,7 +44,8 @@
                             </td>
                             <td class="text-center">{{recommendation.wine.grapeType}}</td>
                             <td class="text-center">{{recommendation.wine.alcoholContent}}%</td>
-                            <td class="text-end">{{recommendation.wine.active ? 'Ativo' : 'Inativo'}}</td>
+                            <td class="text-center">{{recommendation.wine.active ? 'Ativo' : 'Inativo'}}</td>
+                            <td class="text-center c-p" (click)="exclude(recommendation)"><img src="../../../assets/img/trash.svg" alt=""></td>
                         </tr>
                     </table>
                 </div>

@@ -7,5 +7,6 @@ export class Wine {
     region: string;
     grapeType: string;
     alcoholContent: number;
-    imageURL: string
+    imageURL: string;
+    id?: string;
 }

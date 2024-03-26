@@ -4,11 +4,20 @@ import { ModalService } from 'src/app/services/modal/modal.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss']
 })
-export class UsersComponent {
+export class ListComponent {
+
+  get userList() {
+    return this.userService.userList;
+  }
+
+  filters: {
+    page: 0,
+    size: 20
+  }
 
   constructor(private modalService: ModalService,
     private router: Router,
@@ -20,4 +29,11 @@ export class UsersComponent {
 
   }
 
+  listUsers() {
+    
+  }
+
+  seeDetails() {
+    this.router.navigate(['users/details']);
+  }
 }

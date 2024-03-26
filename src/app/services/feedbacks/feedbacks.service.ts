@@ -32,4 +32,16 @@ export class FeedbacksService {
       return null;
     }
   }
+
+  async deleteFeedback(feedbackId: string) {
+    try {
+      this.loadingService.setLoadingState(true);
+      await this.http.delete(`${environment.url}/secure/feedback/${feedbackId}`).toPromise();
+      this.loadingService.setLoadingState(false);
+      return true;
+    } catch (error) {
+      this.loadingService.setLoadingState(false);
+      return null;
+    }
+  }
 }

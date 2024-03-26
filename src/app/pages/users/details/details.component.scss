@@ -1,0 +1,25 @@
+main {
+    .title {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .card-wine-cellars,
+    .card-results {
+        margin-top: 32px;
+        width: 100%;
+        border-radius: 8px;
+        background-color: white;
+        font-size: 16px;
+        padding: 16px;
+    }
+
+    .no-wine-cellars {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 48px 0;
+        font-size: 14px;
+    }
+}

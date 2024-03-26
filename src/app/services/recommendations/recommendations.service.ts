@@ -32,4 +32,28 @@ export class RecommendationsService {
       return null;
     }
   }
+
+  async deleteRecommendation(recommendationId: string) {
+    try {
+      this.loadingService.setLoadingState(true);
+      await this.http.delete(`${environment.url}/secure/recommendation/${recommendationId}`).toPromise();
+      this.loadingService.setLoadingState(false);
+      return true;
+    } catch (error) {
+      this.loadingService.setLoadingState(false);
+      return null;
+    }
+  }
+
+  async addRecommendation(wine: {wine: { id: string }}) {
+    try {
+      this.loadingService.setLoadingState(true);
+      await this.http.post(`${environment.url}/secure/recommendation`, wine).toPromise();
+      this.loadingService.setLoadingState(false);
+      return true;
+    } catch (error) {
+      this.loadingService.setLoadingState(false);
+      return null;
+    }
+  }
 }

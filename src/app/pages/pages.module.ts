@@ -27,6 +27,7 @@ import { ToastModule } from '../components/general/toast/toast.module';
         children: [
           { path: 'wines', loadChildren: () => import('./wines/wines.module').then(m => m.WinesModule) },
           { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
+          { path: 'users/details', loadChildren: () => import('./users/details/details.module').then(m => m.DetailsModule) },
           { path: 'wine-cellars', loadChildren: () => import('./wine-cellars/wine-cellars.module').then(m => m.WineCellarsModule) },
           { path: 'feedbacks', loadChildren: () => import('./feedbacks/feedbacks.module').then(m => m.FeedbacksModule) },
           { path: 'automation-requests', loadChildren: () => import('./automation-requests/automation-requests.module').then(m => m.AutomationRequestsModule) },

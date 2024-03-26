@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuService } from 'src/app/services/menu/menu.service';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -45,11 +46,17 @@ export class MenuComponent {
   }
 
   constructor(private userService: UserService,
-    private menuService: MenuService) {
+    private menuService: MenuService,
+    private router: Router) {
 
   }
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
   }
 
 

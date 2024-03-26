@@ -12,12 +12,18 @@ import { TokenInterceptorService } from './services/interceptor/token-intercepto
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { ToastModule } from './components/general/toast/toast.module';
 import { LoadingComponent } from './components/general/loading/loading.component';
+import { AddWineCellarComponent } from './components/add-wine-cellar/add-wine-cellar.component';
+import { GeneralConfirmModalComponent } from './components/general-confirm-modal/general-confirm-modal.component';
+import { AddRecommendationComponent } from './components/add-recommendation/add-recommendation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddWineComponent,
-    LoadingComponent
+    LoadingComponent,
+    AddWineCellarComponent,
+    GeneralConfirmModalComponent,
+    AddRecommendationComponent
   ],
   imports: [
     BrowserModule,

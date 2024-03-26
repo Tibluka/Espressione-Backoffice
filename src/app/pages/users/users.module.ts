@@ -12,7 +12,13 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule.forChild([
-      { path: '', component: UsersComponent }
+      {
+        path: '', component: UsersComponent,
+        children: [
+          { path: '', loadChildren: () => import('./list/list.module').then(m => m.ListModule) },
+          { path: 'details', loadChildren: () => import('./details/details.module').then(m => m.DetailsModule) }
+        ]
+      }
     ])
   ]
 })
