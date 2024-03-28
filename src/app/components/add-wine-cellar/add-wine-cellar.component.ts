@@ -5,6 +5,7 @@ import { countries } from 'src/app/models/consts/countries';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { ValidatorService } from 'src/app/services/validator/validator.service';
+import { WineCellarService } from 'src/app/services/wine-cellar/wine-cellar.service';
 import { WineService } from 'src/app/services/wine/wine.service';
 
 @Component({
@@ -19,15 +20,12 @@ export class AddWineCellarComponent extends ValidatorService {
   countriesList = countries;
 
   wineCellarForm: FormGroup = new FormGroup({
-    active: new FormControl(null, Validators.required),
-    name: new FormControl('', Validators.required),
-    wineType: new FormControl('', Validators.required),
-    dateHourIncluded: new FormControl('', Validators.required),
-    userIdOwner: new FormControl('', Validators.required)
-  })
+    automated: new FormControl(null, Validators.required),
+/*     name: new FormControl('', Validators.required),
+ */  })
 
   constructor(private modalService: ModalService,
-    private wineService: WineService,
+    private wineCellarService: WineCellarService,
     private toastService: ToastService) {
     super();
     this.year = moment(new Date()).year();
@@ -48,11 +46,6 @@ export class AddWineCellarComponent extends ValidatorService {
   }
 
   next() {
-    const alcoholContent = this.wineCellarForm.get('alcoholContent').value;
-    const year = this.wineCellarForm.get('year').value;
-    this.wineCellarForm.get('alcoholContent').setValue(Number(alcoholContent));
-    this.wineCellarForm.get('year').setValue(Number(year));
-    
     const controls = this.wineCellarForm.controls;
     for (let c in controls) {
       if (this.wineCellarForm.controls[c].invalid) {
@@ -62,12 +55,12 @@ export class AddWineCellarComponent extends ValidatorService {
     }
 
     if (this.wineCellarForm.invalid) {
-      this.toastService.show('Formulário inválido. Verifique os campos marcados.', {
+      this.toastService.show('Formulário inválido. Selecione uma opção.', {
         classname: 'toast-alert toast'
       })
       return;
     } else {
-      const success = this.wineService.addWine(this.wineCellarForm.value);
+      const success = this.wineCellarService.addWineCellar(this.wineCellarForm.value);
       if (success) {
         this.modalService.close(true);
       }

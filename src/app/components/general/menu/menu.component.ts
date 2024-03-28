@@ -27,10 +27,10 @@ export class MenuComponent {
       route: '/recommendations',
       description: 'Recomendações',
     },
-    {
+/*     {
       route: '/automation-requests',
       description: 'Pedidos de automação',
-    }
+    } */
   ];
 
   get loggedUser() {

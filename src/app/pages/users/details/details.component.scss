@@ -4,6 +4,15 @@ main {
         font-weight: 600;
     }
 
+    .card-principal {
+        width: 100%;
+        border-radius: 8px;
+        background-color: white;
+        font-size: 16px;
+        padding: 16px;
+        margin-top: 32px;
+    }
+
     .card-wine-cellars,
     .card-results {
         margin-top: 32px;
