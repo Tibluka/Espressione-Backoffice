@@ -21,6 +21,9 @@ export class RecommendationsComponent {
     size: 10
   }
 
+  searchTerm: string;
+  filter;
+
   constructor(private modalService: ModalService,
     private toastService: ToastService,
     private recommendationsService: RecommendationsService) {
@@ -31,6 +34,16 @@ export class RecommendationsComponent {
   ngOnInit(): void {
 
   }
+
+  search(target: any): void {
+    let value = target.value;
+    this.filter = this.recommendationsList.filter((recommendation) => {
+      return recommendation.wine.name.toLowerCase().includes(value)
+      || recommendation.wine.wineType?.toLowerCase().includes(value)
+      || recommendation.wine.grapeType?.toLowerCase().includes(value)
+    });
+  }
+
 
   listRecommendations() {
 

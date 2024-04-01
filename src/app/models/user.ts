@@ -1,3 +1,13 @@
+export class UserList  {
+   content: Array<User>;
+   number: number;
+   numberOfElements: number;
+   size: number;
+   totalElements: number;
+   totalPages: number
+}
+
+
 export class User  {
     name: string = '';
     id: string = '';

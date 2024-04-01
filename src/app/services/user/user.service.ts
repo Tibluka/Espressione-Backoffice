@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from 'src/app/models/user';
+import { User, UserList } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
 import { LoadingService } from '../loading/loading.service';
 import { HttpClient } from '@angular/common/http';
@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
 
   private loggedUserData: User = new User();
-  private userListData: Array<User> = [];
+  private userListData: UserList = null;
 
   get loggedUser() {
     return this.loggedUserData;
@@ -47,6 +47,7 @@ export class UserService {
     try {
       this.loadingService.setLoadingState(true);
       const userList = await this.http.get<any>(`${environment.url}/secure/user/list/?userTypeEnum=CLIENTE_ESPRESSIONE&userStatusEnum=ACTIVE&page=${page}&size=${size}`).toPromise();
+      this.loadingService.setLoadingState(false);
       this.userListData = userList;
       return userList;
     } catch (error) {

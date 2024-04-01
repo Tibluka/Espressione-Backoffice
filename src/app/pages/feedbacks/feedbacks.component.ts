@@ -12,11 +12,13 @@ import { ToastService } from 'src/app/services/toast/toast.service';
 export class FeedbacksComponent {
 
   get feedbacksList() {
-    return this.feedbacksService.feedbacksList.sort((a, b) => {
+    this.feedbacksService.feedbacksList.content.sort((a, b) => {
       const dateA = new Date(a.dateHourIncluded).getTime();
       const dateB = new Date(b.dateHourIncluded).getTime();
       return dateB - dateA;
     });
+  
+    return this.feedbacksService.feedbacksList;
   }
 
   filters: {
@@ -35,7 +37,7 @@ export class FeedbacksComponent {
   }
 
   listFeedbacks() {
-    
+
   }
 
   exclude(feedback: any) {
@@ -50,7 +52,7 @@ export class FeedbacksComponent {
         btnCancelText: 'Cancelar'
       }
     })
-    
+
     this.modalService.state.subscribe(async (onClose) => {
       if (onClose.modalState === false && onClose.action === true) {
         const success = await this.feedbacksService.deleteFeedback(feedback.id);
@@ -63,4 +65,15 @@ export class FeedbacksComponent {
       }
     })
   }
+
+  async seeMoreFeedbacks() {
+    if (this.feedbacksList.content.length == this.feedbacksList.totalElements) {
+      return
+    }
+    this.filters.page += 1;
+    console.log(this.filters)
+    const result = await this.feedbacksService.listAllFeedbacks(0, 10);
+    if (result.totalElements === 0) this.filters.page -= 1;
+  }
+
 }

@@ -15,7 +15,7 @@
     <div class="card-results">
         <div class="title">Feedbacks</div>
         <hr style="margin: 16px 0 24px 0;">
-        <div *ngIf="feedbacksList && feedbacksList.length > 0">
+        <div *ngIf="feedbacksList && feedbacksList.content?.length > 0">
 
             <div class="w-100 table-config">
                 <table>
@@ -24,7 +24,7 @@
                     <th class="text-center">Data</th>
                     <th class="text-center">Público</th>
                     <th class="text-center">Ação</th>
-                    <tr *ngFor="let feedback of feedbacksList; index as i" class="">
+                    <tr *ngFor="let feedback of feedbacksList.content; index as i" class="">
                         <td class="text-start text-truncate">{{feedback.description}}</td>
                         <td class="text-center text-truncate">{{feedback.rating}}</td>
                         <td class="text-center">{{ feedback.dateHourIncluded ? (feedback.dateHourIncluded | date:
@@ -35,8 +35,17 @@
                 </table>
             </div>
         </div>
-        <div class="no-results" *ngIf="!feedbacksList || feedbacksList.length === 0">
-            <i>Nenhum usuário encontrado</i>
+        
+        <div *ngIf="feedbacksList && feedbacksList.content?.length > 0"
+            class="d-flex flex-column align-items-center justify-content-center w-100 mt-4">
+            <div style="font-size: 14px;">Mostrando {{feedbacksList?.content?.length}} de {{feedbacksList?.totalElements}}</div>
+            <div *ngIf="feedbacksList?.content?.length < feedbacksList?.totalElements" class="c-p"
+                style="text-decoration: underline;" (click)="seeMoreFeedbacks()">Ver mais
+            </div>
+        </div>
+
+        <div class="no-results" *ngIf="!feedbacksList || feedbacksList.content?.length === 0">
+            <i>Nenhum feedback encontrado</i>
         </div>
     </div>
 

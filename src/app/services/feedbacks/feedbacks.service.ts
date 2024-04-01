@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Feedback } from 'src/app/models/feedback';
+import { Feedback, FeedbacksList } from 'src/app/models/feedback';
 import { LoadingService } from '../loading/loading.service';
 import { environment } from 'src/environments/environment';
 
@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class FeedbacksService {
 
-  private feedbacksListData: Array<Feedback> = [];
+  private feedbacksListData: FeedbacksList = null;
 
   get feedbacksList() {
     return this.feedbacksListData;
@@ -23,8 +23,8 @@ export class FeedbacksService {
   async listAllFeedbacks(page: number, size: number) {
     try {
       this.loadingService.setLoadingState(true);
-      const feedbacksList = await this.http.get<any>(`${environment.url}/secure/feedback?size=${size}&page=${page}`).toPromise();
-      this.feedbacksListData = feedbacksList.content;
+      const feedbacksList = await this.http.get<FeedbacksList>(`${environment.url}/secure/feedback?size=${size}&page=${page}`).toPromise();
+      this.feedbacksListData = feedbacksList;
       this.loadingService.setLoadingState(false);
       return feedbacksList;
     } catch (error) {

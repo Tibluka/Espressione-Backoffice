@@ -5,13 +5,6 @@
         <div class="title">Detalhes do usuário</div>
         <hr style="margin: 16px 0 24px 0;">
         <div *ngIf="userSelected">
-            <div class="search">
-                <div class="d-flex align-items-end justify-content-between">
-                    <div class="form-group d-flex flex-column w-50 me-4">
-                        <input type="text" placeholder="Digite o nome">
-                    </div>
-                </div>
-            </div>
 
             <div class="w-100 table-config">
                 <table>
@@ -23,28 +16,44 @@
                     <tr class="">
                         <td class="text-start text-truncate">{{userSelected.name}}</td>
                         <td class="text-start text-truncate">{{userSelected.email}}</td>
-                        <td class="text-center">{{userSelected.cpfCnpj}}</td>
-                        <td class="text-center">{{userSelected.cellphone}}</td>
+                        <td class="text-center">{{userSelected.cpfCnpj | mask: '000.000.000-00'}}</td>
+                        <td class="text-center">{{userSelected.cellphone | mask: '(00) 00000-0000'}}</td>
                         <td class="text-end">{{userSelected.userStatusEnum === 'ACTIVE' ? 'Ativo' : 'Inativo'}}</td>
                     </tr>
                 </table>
             </div>
+
+            <!--     <div class="w-100 d-flex justify-content-between table-config">
+
+                <div class="d-flex flex-column justify-content-start">
+                    <div class="text-start subtitle">Nome</div>
+                    <div class="text-start text-truncate">{{userSelected.name}}</div>
+                </div>
+                <div class="d-flex flex-column justify-content-start">
+                    <div class="text-start subtitle">E-mail</div>
+                    <div class="text-start text-truncate">{{userSelected.email}}</div>
+                </div>
+                <div class="d-flex flex-column justify-content-start">
+                    <div class="text-start subtitle">CPF/CNPJ</div>
+                    <div class="text-start">{{userSelected.cpfCnpj | mask: '000.000.000-00'}}</div>
+                </div>
+                <div class="d-flex flex-column justify-content-start">
+                    <div class="text-start subtitle">Celular</div>
+                    <div class="text-start">{{userSelected.cellphone | mask: '(00) 00000-0000'}}</div>
+                </div>
+                <div class="d-flex flex-column justify-content-start">
+                    <div class="text-start subtitle">Status</div>
+                    <div class="text-start">{{userSelected.userStatusEnum === 'ACTIVE' ? 'Ativo' : 'Inativo'}}</div>
+                </div>
+            </div> -->
         </div>
     </div>
 
-    <div class="card-principal">
-        <div class="title">Nova adega</div>
-
-        <hr style="margin: 16px 0 24px 0;">
-        <button (click)="addWineCellar()" class="primary-btn medium">Adicionar adega</button>
-    </div>
-
-
     <div class="card-wine-cellars">
-        <div class="title">Todas as adegas</div>
+        <div class="title">Adegas desse usuário</div>
         <hr style="margin: 16px 0 24px 0;">
 
-        <div *ngIf="wineCellarList && wineCellarList.length > 0">
+        <div *ngIf="wineCellarByUserList && wineCellarByUserList.length > 0">
             <!--     <div class="search">
                 <div class="d-flex align-items-end justify-content-between">
                     <div class="form-group d-flex flex-column w-50 me-4">
@@ -59,7 +68,7 @@
                     <th class="text-start w-25">Data de criação</th>
                     <th class="text-center w-25">Adega automatizada</th>
                     <th class="text-center w-25">Ação</th>
-                    <tr *ngFor="let wineCellar of wineCellarList; index as i" class="">
+                    <tr *ngFor="let wineCellar of wineCellarByUserList; index as i" class="">
                         <td class="text-start w-25 text-truncate">{{wineCellar.name}}</td>
                         <td class="text-start w-25 text-truncate">{{wineCellar.dateHourIncluded | date: 'dd/MM/yyyy
                             HH:mm'}}h</td>
@@ -71,10 +80,47 @@
                 </table>
             </div>
         </div>
-        <div *ngIf="wineCellarList && wineCellarList.length === 0" class="no-wine-cellars">
+        <div *ngIf="wineCellarByUserList && wineCellarByUserList.length === 0" class="no-wine-cellars">
             <i>Nenhuma adega encontrada</i>
         </div>
     </div>
 
 
+    <div class="card-feedbacks">
+        <div class="title">Feedbacks desse usuário</div>
+        <hr style="margin: 16px 0 24px 0;">
+        <div *ngIf="feedbacksList && feedbacksList.content.length > 0">
+
+            <div class="w-100 table-config">
+                <table>
+                    <th class="text-start">Descrição</th>
+                    <th class="text-center">Avaliação</th>
+                    <th class="text-center">Data</th>
+                    <th class="text-center">Público</th>
+                    <th class="text-center">Ação</th>
+                    <tr *ngFor="let feedback of feedbacksList.content; index as i" class="">
+                        <td class="text-start text-truncate">{{feedback.description}}</td>
+                        <td class="text-center text-truncate">{{feedback.rating}}</td>
+                        <td class="text-center">{{ feedback.dateHourIncluded ? (feedback.dateHourIncluded | date:
+                            'dd/MM/yyyy HH:mm') : '-' }}</td>
+                        <td class="text-center">{{feedback.public ? 'Sim' : 'Não'}}</td>
+                        <td class="text-center c-p" (click)="exclude(feedback)"><img src="../../../assets/img/trash.svg"
+                                alt=""></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div *ngIf="feedbacksList && feedbacksList.content.length > 0"
+            class="d-flex flex-column align-items-center justify-content-center w-100 mt-4">
+            <div style="font-size: 14px;">Mostrando {{feedbacksList?.content?.length}} de {{feedbacksList?.totalElements}}</div>
+            <div *ngIf="feedbacksList?.content?.length < feedbacksList?.totalElements" class="c-p"
+                style="text-decoration: underline;" (click)="seeMoreFeedbacks()">Ver mais
+            </div>
+        </div>
+
+        <div class="no-wine-cellars" *ngIf="!feedbacksList || feedbacksList.content.length === 0">
+            <i>Nenhum feedback encontrado</i>
+        </div>
+    </div>
 </main>

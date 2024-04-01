@@ -1,5 +1,5 @@
 <main>
-    <div class="card-search">
+<!--     <div class="card-search">
         <div class="title">Buscar</div>
         <hr style="margin: 16px 0 24px 0;">
         <div class="d-flex align-items-end justify-content-between">
@@ -9,21 +9,13 @@
             </div>
             <button class="primary-btn small">Buscar</button>
         </div>
-    </div>
+    </div> -->
 
 
     <div class="card-results">
-        <div class="title" (click)="seeDetails()">Usuários</div>
+        <div class="title">Usuários</div>
         <hr style="margin: 16px 0 24px 0;">
-        <div *ngIf="userList && userList.length > 0">
-            <div class="search">
-                <div class="d-flex align-items-end justify-content-between">
-                    <div class="form-group d-flex flex-column w-50 me-4">
-                        <input type="text" placeholder="Digite o nome">
-                    </div>
-                </div>
-            </div>
-
+        <div *ngIf="userList && userList.content.length > 0">
             <div class="w-100 table-config">
                 <table>
                     <th class="text-start">Nome</th>
@@ -31,17 +23,27 @@
                     <th class="text-center">CPF/CNPJ</th>
                     <th class="text-center">Celular</th>
                     <th class="text-end">Status</th>
-                    <tr *ngFor="let user of userList; index as i" class="">
+                    <tr *ngFor="let user of userList.content; index as i" class="c-p" (click)="seeDetails(user)">
                         <td class="text-start text-truncate">{{user.name}}</td>
                         <td class="text-start text-truncate">{{user.email}}</td>
-                        <td class="text-center">{{user.cpfCnpj}}</td>
-                        <td class="text-center">{{user.cellphone}}</td>
+                        <td class="text-center">{{user.cpfCnpj | mask: '000.000.000-00'}}</td>
+                        <td class="text-center">{{user.cellphone | mask: '(00) 00000-0000'}}</td>
                         <td class="text-end">{{user.userStatusEnum === 'ACTIVE' ? 'Ativo' : 'Inativo'}}</td>
                     </tr>
                 </table>
             </div>
         </div>
-        <div class="no-results" *ngIf="!userList || userList.length === 0">
+
+        <div *ngIf="userList && userList.content.length > 0"
+            class="d-flex flex-column align-items-center justify-content-center w-100 mt-4">
+            <div style="font-size: 14px;">Mostrando {{userList?.content?.length}} de {{userList?.totalElements}}</div>
+            <div *ngIf="userList?.content?.length < userList?.totalElements" class="c-p"
+                style="text-decoration: underline;" (click)="seeMoreUsers()">Ver mais
+            </div>
+        </div>
+
+        
+        <div class="no-results" *ngIf="!userList || userList.content.length === 0">
             <i>Nenhum usuário encontrado</i>
         </div>
     </div>

@@ -35,7 +35,8 @@ export class WinesComponent {
     let value = target.value;
     this.filter = this.allWinesList.filter((wine) => {
       return wine.name.toLowerCase().includes(value)
-        || wine.wineType?.toLowerCase().includes(value)
+      || wine.wineType?.toLowerCase().includes(value)
+      || wine.grapeType?.toLowerCase().includes(value)
     });
   }
 

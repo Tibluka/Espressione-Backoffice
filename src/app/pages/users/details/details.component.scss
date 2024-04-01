@@ -14,13 +14,18 @@ main {
     }
 
     .card-wine-cellars,
-    .card-results {
+    .card-results,
+    .card-feedbacks {
         margin-top: 32px;
         width: 100%;
         border-radius: 8px;
         background-color: white;
         font-size: 16px;
         padding: 16px;
+    }
+
+    .card-feedbacks {
+        margin-bottom: 32px;
     }
 
     .no-wine-cellars {
@@ -31,7 +36,16 @@ main {
         margin: 48px 0;
         font-size: 14px;
     }
+
     .w-25 {
         width: 25%;
+    }
+
+    .table-config {
+        margin-top: 32px;
+    }
+
+    .subtitle {
+        font-weight: 700;
     }
 }

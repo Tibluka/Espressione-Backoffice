@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { WinesComponent } from './wines.component';
 import { RouterModule } from '@angular/router';
 import { FilterPipe } from './filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,6 +14,7 @@ import { FilterPipe } from './filter.pipe';
   ],
   imports: [
     CommonModule,  
+    FormsModule,
     RouterModule.forChild([
       { path: '', component: WinesComponent }
     ])

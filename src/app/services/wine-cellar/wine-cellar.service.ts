@@ -12,6 +12,7 @@ import { WineCellar } from 'src/app/models/winecellar';
 export class WineCellarService {
   private wineCellarData: any;
   private allWineCellarListData: Array<WineCellar> = [];
+  private WineCellarByUserListData: Array<WineCellar> = [];
 
   get winecellar() {
     return this.wineCellarData;
@@ -20,6 +21,11 @@ export class WineCellarService {
   get allWineCellarList() {
     return this.allWineCellarListData;
   }
+
+  get wineCellarByUserList() {
+    return this.WineCellarByUserListData;
+  }
+
 
   constructor(private http: HttpClient,
     private loadingService: LoadingService,
@@ -48,6 +54,22 @@ export class WineCellarService {
     try {
       const wineCellars = await this.http.get<Array<WineCellar>>(`${environment.url}/secure/winehouse`).toPromise();
       this.allWineCellarListData = wineCellars;
+      this.loadingService.setLoadingState(false);
+      return true
+    } catch (error) {
+      this.toastService.show(error.error.message,
+        { classname: 'toast toast-danger' })
+      this.loadingService.setLoadingState(false);
+      return false
+    }
+  }
+
+  async listWineCellarsByUser(userId: string) {
+    this.toastService.clear();
+    this.loadingService.setLoadingState(true);
+    try {
+      const wineCellarsByUser = await this.http.get<Array<WineCellar>>(`${environment.url}/secure/winehouse/user/${userId}`).toPromise();
+      this.WineCellarByUserListData = wineCellarsByUser;
       this.loadingService.setLoadingState(false);
       return true
     } catch (error) {

@@ -4,7 +4,7 @@
         <hr style="margin: 16px 0 24px 0;">
         <button (click)="addRecommendation()" class="primary-btn medium">Adicionar recomendação</button>
     </div>
-
+<!-- 
     <div class="card-search">
         <div class="title">Buscar</div>
         <hr style="margin: 16px 0 24px 0;">
@@ -15,13 +15,20 @@
             </div>
             <button class="primary-btn small">Buscar</button>
         </div>
-    </div>
+    </div> -->
 
 
     <div class="card-results">
         <div class="title">Recomendações</div>
         <hr style="margin: 16px 0 24px 0;">
         <div *ngIf="recommendationsList && recommendationsList.length > 0">
+            <div class="search">
+                <div class="d-flex align-items-end justify-content-between">
+                    <div class="form-group d-flex flex-column w-50 me-4">
+                        <input type="text" [(ngModel)]="searchTerm" placeholder="Digite o nome, tipo ou uva">
+                    </div>
+                </div>
+            </div>
 
             <div class="w-100 table-config">
                 <div class="w-100 table-config">
@@ -35,7 +42,8 @@
                         <th class="text-center">Álcool</th>
                         <th class="text-center">Status</th>
                         <th class="text-center">Ação</th>
-                        <tr *ngFor="let recommendation of recommendationsList" class="">
+                        <tr *ngFor="let recommendation of recommendationsList | filter: searchTerm; index as i"
+                            class="">
                             <td class="text-start text-truncate">{{recommendation.wine.name}}</td>
                             <td class="text-start text-truncate">{{recommendation.wine.wineType}}</td>
                             <td class="text-center">{{recommendation.wine.year}}</td>
@@ -45,7 +53,8 @@
                             <td class="text-center">{{recommendation.wine.grapeType}}</td>
                             <td class="text-center">{{recommendation.wine.alcoholContent}}%</td>
                             <td class="text-center">{{recommendation.wine.active ? 'Ativo' : 'Inativo'}}</td>
-                            <td class="text-center c-p" (click)="exclude(recommendation)"><img src="../../../assets/img/trash.svg" alt=""></td>
+                            <td class="text-center c-p" (click)="exclude(recommendation)"><img
+                                    src="../../../assets/img/trash.svg" alt=""></td>
                         </tr>
                     </table>
                 </div>
