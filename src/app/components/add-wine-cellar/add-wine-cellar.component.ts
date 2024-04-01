@@ -21,8 +21,8 @@ export class AddWineCellarComponent extends ValidatorService {
 
   wineCellarForm: FormGroup = new FormGroup({
     automated: new FormControl(null, Validators.required),
-/*     name: new FormControl('', Validators.required),
- */  })
+    name: new FormControl('', Validators.required),
+  })
 
   constructor(private modalService: ModalService,
     private wineCellarService: WineCellarService,

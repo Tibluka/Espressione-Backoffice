@@ -6,7 +6,8 @@
             <div class="form-group d-flex align-items-center radio">
                 <div class="form-check">
                     <input required [value]="true" class="form-check-input" type="radio" formControlName="automated"
-                        id="automated" [ngClass]="{'invalid-form-field': validateField(wineCellarForm.get('automated'))}">
+                        id="automated"
+                        [ngClass]="{'invalid-form-field': validateField(wineCellarForm.get('automated'))}">
                     <label class="form-check-label" for="automated">
                         Automatizada </label>
                 </div>
@@ -18,13 +19,13 @@
                 </div>
             </div>
 
-   <!--          <div class="w-100">
+            <div class="w-100">
                 <div class="form-group d-flex flex-column w-100">
                     <label for="name">Nome</label>
                     <input [ngClass]="{'invalid-form-field': validateField(wineCellarForm.get('name'))}" class=""
                         formControlName="name" type="text">
                 </div>
-            </div> -->
+            </div>
         </div>
 
         <div class="buttons-accept">

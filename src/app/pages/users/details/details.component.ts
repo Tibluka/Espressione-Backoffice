@@ -56,7 +56,7 @@ export class DetailsComponent {
   
   exclude(wineCellar: any) {
     let message;
-    message = `Deseja confirmar a exclusão da adega <b>${wineCellar}</b>?`;
+    message = `Deseja confirmar a exclusão da adega <b>${wineCellar.name}</b>?`;
 
     this.modalService.open(GeneralConfirmModalComponent, {
       content: {

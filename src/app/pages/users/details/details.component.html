@@ -55,13 +55,18 @@
 
             <div class="w-100 table-config">
                 <table>
-                    <th class="text-start">Adega automatizada</th>
-                    <th class="text-start">Data de criação</th>
-                    <th class="text-center">Ação</th>
+                    <th class="text-start w-25">Nome</th>
+                    <th class="text-start w-25">Data de criação</th>
+                    <th class="text-center w-25">Adega automatizada</th>
+                    <th class="text-center w-25">Ação</th>
                     <tr *ngFor="let wineCellar of wineCellarList; index as i" class="">
-                        <td class="text-start text-truncate">{{wineCellar.automated === true ? 'Sim' : 'Não'}}</td>
-                        <td class="text-start text-truncate">{{wineCellar.dateHourIncluded | date: 'dd/MM/yyyy  HH:mm'}}h</td>
-                        <td class="text-center c-p" (click)="exclude(wineCellar)"><img src="../../../assets/img/trash.svg" alt=""></td>
+                        <td class="text-start w-25 text-truncate">{{wineCellar.name}}</td>
+                        <td class="text-start w-25 text-truncate">{{wineCellar.dateHourIncluded | date: 'dd/MM/yyyy
+                            HH:mm'}}h</td>
+                        <td class="text-center w-25 text-truncate">{{wineCellar.automated === true ? 'Sim' : 'Não'}}
+                        </td>
+                        <td class="text-center w-25 c-p" (click)="exclude(wineCellar)"><img
+                                src="../../../assets/img/trash.svg" alt=""></td>
                     </tr>
                 </table>
             </div>
