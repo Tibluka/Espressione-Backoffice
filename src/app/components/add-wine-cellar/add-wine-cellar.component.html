@@ -1,5 +1,5 @@
 <main>
-    <form [formGroup]="wineCellarForm" (ngSubmit)="next()">
+    <form [formGroup]="wineCellarForm">
         <div class="form">
             <div class="title">Adicionar adega</div>
 
@@ -46,14 +46,16 @@
 
 
             <div *ngIf="drawers.length > 0" class="mt-3">
-                <div class="d-flex align-items-end mb-3" *ngFor="let drawer of drawers">
+                <div class="d-flex align-items-end mb-3" *ngFor="let drawer of drawers; index as i">
                     <div class="form-group d-flex flex-column me-3 w-100">
-                        <label for="">Gaveta</label>
-                        <input type="text" placeholder="Digite a gaveta">
+                        <label [for]="'drawer_' + i">Gaveta</label>
+                        <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="drawer.drawer"
+                            [name]="'drawer_' + i" placeholder="Digite a gaveta">
                     </div>
                     <div class="w-100">
-                        <app-custom-multiple-select [bordered]="true" [label]="'Vinhos'" [options]="wineList"
-                            [type]="'SELECT'" (selectOptionEmitter)="selectOption($event)">
+                        <app-custom-multiple-select [invalid]="drawer.invalid" [bordered]="true"
+                            [label]="'Escolha o vinho'" [options]="wineList" [type]="'SELECT'"
+                            (selectOptionEmitter)="selectOption($event, i)">
                         </app-custom-multiple-select>
                     </div>
                 </div>
@@ -67,7 +69,7 @@
             <button (click)="close(false)" type="button" class="primary-cancel-btn exclude">
                 Cancelar
             </button>
-            <button type="submit" class="primary-btn">
+            <button type="button" (click)="next()" class="primary-btn">
                 Confirmar
             </button>
         </div>

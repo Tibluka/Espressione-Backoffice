@@ -33,18 +33,36 @@ export class WineCellarService {
 
   }
 
-  async addWineCellar(wine: Wine) {
+  async addWine(wineCellarId: string, wineId: string, drawer: string | number) {
     this.toastService.clear();
     this.loadingService.setLoadingState(true);
     try {
-      await this.http.post(`${environment.url}/secure/winehouse`, wine).toPromise();
-      this.toastService.show('Adega criada com sucesso!',
-        { classname: 'toast toast-success' });
+      const response = await this.http.post(`${environment.url}/secure/winehouse/addWine/${wineCellarId}/${wineId}/${drawer}`, null).toPromise();
       this.loadingService.setLoadingState(false);
+      return response;
     } catch (error) {
       this.toastService.show(error.error.message,
         { classname: 'toast toast-danger' })
       this.loadingService.setLoadingState(false);
+      return null;
+    }
+  }
+
+
+  async addWineCellar(wine: Wine) {
+    this.toastService.clear();
+    this.loadingService.setLoadingState(true);
+    try {
+      const response = await this.http.post(`${environment.url}/secure/winehouse`, wine).toPromise();
+      this.toastService.show('Adega criada com sucesso!',
+        { classname: 'toast toast-success' });
+      this.loadingService.setLoadingState(false);
+      return response
+    } catch (error) {
+      this.toastService.show(error.error.message,
+        { classname: 'toast toast-danger' })
+      this.loadingService.setLoadingState(false);
+      return null
     }
   }
 

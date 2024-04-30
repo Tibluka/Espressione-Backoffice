@@ -11,7 +11,12 @@ import { WineCellarService } from 'src/app/services/wine-cellar/wine-cellar.serv
 import { WineService } from 'src/app/services/wine/wine.service';
 
 class DrawerInfo {
-  wine: Wine = new Wine();
+  wineId: string;
+  drawer: string | number;
+  invalid: boolean;
+  constructor(drawer: string | number) {
+    this.drawer = drawer;
+  }
 }
 
 @Component({
@@ -53,12 +58,22 @@ export class AddWineCellarComponent extends ValidatorService {
     this.modalService.close(status);
   }
 
-  next() {
+  async next() {
     const controls = this.wineCellarForm.controls;
     for (let c in controls) {
       if (this.wineCellarForm.controls[c].invalid) {
         this.wineCellarForm.controls[c]
           .markAsTouched();
+      }
+    }
+
+    if (this.drawers.length > 0) {
+      const invalidFields = this.drawers.find(d => d.invalid);
+      if (invalidFields) {
+        this.toastService.show('Formulário inválido. Selecione uma opção.', {
+          classname: 'toast-alert toast'
+        })
+        return;
       }
     }
 
@@ -68,8 +83,15 @@ export class AddWineCellarComponent extends ValidatorService {
       })
       return;
     } else {
-      const success = this.wineCellarService.addWineCellar(this.wineCellarForm.value);
-      if (success) {
+      const wineCellarCreated: any = await this.wineCellarService.addWineCellar(this.wineCellarForm.value);
+      if (wineCellarCreated) {
+        if (this.wineCellarForm.value.automated === true) {
+          await Promise.all(
+            this.drawers.map((drawer: DrawerInfo) => {
+              return this.wineCellarService.addWine(wineCellarCreated.id, drawer.wineId, drawer.drawer);
+            })
+          )
+        }
         this.modalService.close(true);
       }
     }
@@ -88,12 +110,18 @@ export class AddWineCellarComponent extends ValidatorService {
     const drawersQty = this.wineCellarForm.get('drawersQty').value;
 
     for (let index = 0; index < drawersQty; index++) {
-      this.drawers.push(new DrawerInfo())
+      this.drawers.push(new DrawerInfo(String(index + 1)))
     }
   }
 
-  selectOption(customOption: CustomOption) {
-    this.wineCellarForm.get(customOption.formControlName).setValue(customOption.value);
+  selectOption(customOption: CustomOption, index: number) {
+    const wineAdded = this.drawers.find(d => d.wineId === customOption.value);
+    if (wineAdded) {
+      this.drawers[index].invalid = true;
+      return
+    }
+    this.drawers[index].wineId = customOption.value;
+    this.drawers[index].invalid = false;
   }
 
 }
