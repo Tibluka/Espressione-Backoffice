@@ -109,4 +109,14 @@ export class DetailsComponent {
     const result = await this.feedbacksService.listAllFeedbacks(0, 10);
     if (result.totalElements === 0) this.filters.page -= 1;
   }
+
+  addWinecellar() {
+    this.modalService.open(AddWineCellarComponent)
+
+    this.modalService.state.subscribe(onClose => {
+      if (onClose.modalState === false && onClose.action === true) {
+
+      }
+    })
+  }
 }

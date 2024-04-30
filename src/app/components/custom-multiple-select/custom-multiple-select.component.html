@@ -1,0 +1,48 @@
+<main [ngClass]="{'bordered': bordered, 'disabled': disabled, 'invalid': invalid}">
+    <div
+        [ngClass]="{'option-selected': getValue(), 'title-gray': titleGray && !invalid, 'title-invalid': invalid, 'title': !invalid}">
+        {{label}}
+    </div>
+    <container-element [ngSwitch]="type">
+        <div class="select" (click)="openOptions()" [ngClass]="{'active': dropdownStatus, 'invalid': invalid}"
+            *ngSwitchCase="'SELECT'">
+            <span class="d-flex align-items-center w-100 h-100 option-value">{{getValue()}}</span>
+            <img class="down"
+                src="https://corretor.portoseguro.com.br/col/static-files/coberturaprovisoria/assets/icons/dropdown.svg"
+                alt="">
+
+            <div class="dropdown" #main *ngIf="options.length > 0"
+                [ngClass]="{'active': dropdownStatus && options.length >= 3, 'active1': dropdownStatus && options.length == 1, 'active2': dropdownStatus && options.length == 2}">
+                <div class="option c-p" *ngIf="options[0].multiple">
+                    <label class="container-checkbox w-100 d-flex align-items-center">
+                        Todas
+                        <input type="checkbox" (change)="selectAll()">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="option c-p sub-option d-flex align-items-center" *ngFor="let option of filteredOptions"
+                    (click)="selectOption(option)">
+                    <label class="container-checkbox w-100 d-flex align-items-center" *ngIf="option.multiple">
+                        {{option.description}}
+                        <input type="checkbox" name="checkbox" [value]="option.value"
+                            (change)="selectOneOfMultiple($event, option)" [checked]="option.selected">
+                        <span class="checkmark"></span>
+                    </label>
+                    <div *ngIf="!option.multiple" class="general-input">
+                        {{option.description}}</div>
+                </div>
+                <div *ngIf="empty" class="empty">
+                    Nenhum item encontrado
+                </div>
+            </div>
+        </div>
+        <div class="select" *ngSwitchCase="'DATE'">
+            <input type="date" class="date" name="dateHourCreated">
+        </div>
+        <input class="search-input" id="search-input-options" type="text" *ngIf="dropdownStatus"
+            (keyup)="filterOptions()" [(ngModel)]="search" autocomplete="off">
+
+    </container-element>
+
+
+</main>

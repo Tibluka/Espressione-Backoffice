@@ -50,7 +50,10 @@
     </div>
 
     <div class="card-wine-cellars">
-        <div class="title">Adegas desse usuário</div>
+        <div class="d-flex justify-content-between">
+            <div class="title">Adegas desse usuário</div>
+            <button class="primary-btn small" (click)="addWinecellar()">Adicionar adega</button>
+        </div>
         <hr style="margin: 16px 0 24px 0;">
 
         <div *ngIf="wineCellarByUserList && wineCellarByUserList.length > 0">
@@ -113,7 +116,8 @@
 
         <div *ngIf="feedbacksList && feedbacksList.content.length > 0"
             class="d-flex flex-column align-items-center justify-content-center w-100 mt-4">
-            <div style="font-size: 14px;">Mostrando {{feedbacksList?.content?.length}} de {{feedbacksList?.totalElements}}</div>
+            <div style="font-size: 14px;">Mostrando {{feedbacksList?.content?.length}} de
+                {{feedbacksList?.totalElements}}</div>
             <div *ngIf="feedbacksList?.content?.length < feedbacksList?.totalElements" class="c-p"
                 style="text-decoration: underline;" (click)="seeMoreFeedbacks()">Ver mais
             </div>

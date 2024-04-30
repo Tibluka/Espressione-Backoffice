@@ -15,6 +15,7 @@ import { LoadingComponent } from './components/general/loading/loading.component
 import { AddWineCellarComponent } from './components/add-wine-cellar/add-wine-cellar.component';
 import { GeneralConfirmModalComponent } from './components/general-confirm-modal/general-confirm-modal.component';
 import { AddRecommendationComponent } from './components/add-recommendation/add-recommendation.component';
+import { CustomMultipleSelectModule } from './components/custom-multiple-select/custom-multiple-select.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AddRecommendationComponent } from './components/add-recommendation/add-
     ToastModule,
     FormsModule,
     ReactiveFormsModule,
+    CustomMultipleSelectModule,
     NgxMaskDirective, 
     NgxMaskPipe,
     RouterModule.forRoot([

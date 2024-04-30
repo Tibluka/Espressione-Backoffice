@@ -1,5 +1,5 @@
 export class Wine {
-    active: string;
+    active: boolean = true;
     name: string;
     wineType: string;
     year: number;
